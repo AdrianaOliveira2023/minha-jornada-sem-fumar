@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#e9eef3" id="themeColorMeta" />
+  <title>Minha Jornada Sem Fumar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Sua jornada</p>
+        <h1>É um novo começo</h1>
+      </div>
+      <div class="topbar__actions">
+        <button class="icon-button" id="themeButton" type="button" aria-label="Alternar tema" title="Alternar tema">☾</button>
+        <button class="icon-button" id="openSettings" type="button" aria-label="Abrir configurações" title="Configurações">⚙️</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero card">
+        <div class="hero__icon" aria-hidden="true">🧠</div>
+        <p class="hero__label">Você está sem fumar há</p>
+
+        <div class="counter" aria-live="polite">
+          <div class="counter__item"><strong id="days">0</strong><span>dias</span></div>
+          <div class="counter__item"><strong id="hours">00</strong><span>horas</span></div>
+          <div class="counter__item"><strong id="minutes">00</strong><span>min</span></div>
+          <div class="counter__item"><strong id="seconds">00</strong><span>seg</span></div>
+        </div>
+
+        <p class="motivational-message" id="motivationalMessage">Cada minuto conta. Continue.</p>
+
+        <div class="hero__actions">
+          <button class="button button--primary" id="cravingButton" type="button">Estou com vontade de fumar</button>
+          <button class="button button--ghost" id="shareButton" type="button">Compartilhar conquista</button>
+        </div>
+      </section>
+
+      <section class="stats-grid" aria-label="Resumo da jornada">
+        <article class="stat-card card">
+          <div class="stat-card__icon" aria-hidden="true">🚬</div>
+          <div><span>Cigarros não fumados</span><strong id="cigarettesAvoided">0</strong></div>
+        </article>
+
+        <article class="stat-card card">
+          <div class="stat-card__icon" aria-hidden="true">💰</div>
+          <div><span>Dinheiro economizado</span><strong id="moneySaved">R$0,00</strong></div>
+        </article>
+
+        <article class="stat-card card">
+          <div class="stat-card__icon" aria-hidden="true">⏳</div>
+          <div><span>Tempo conquistado</span><strong id="timeSmokeFree">0 horas</strong></div>
+        </article>
+      </section>
+
+      <section class="card progress-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Próxima conquista</p>
+            <h2 id="nextAchievementTitle">1 hora</h2>
+          </div>
+        </div>
+
+        <div class="progress-track" role="progressbar"
+             aria-label="Progresso para a próxima conquista"
+             aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="progress-bar" id="achievementProgress"></div>
+        </div>
+
+        <p class="progress-caption" id="achievementCaption">Você acabou de começar. Um passo de cada vez.</p>
+      </section>
+
+      <section class="card body-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Seu corpo está mudando</p>
+            <h2 id="bodyBenefitTitle">Cada escolha faz diferença</h2>
+          </div>
+        </div>
+
+        <div class="body-benefit">
+          <div class="body-benefit__icon" id="bodyBenefitIcon" aria-hidden="true">🌱</div>
+          <div>
+            <h3 id="bodyBenefitHeading">Você já começou</h3>
+            <p id="bodyBenefitText">Seu corpo já está respondendo à decisão de ficar sem fumar.</p>
+          </div>
+        </div>
+
+        <p class="body-message">Não importa há quanto tempo você fuma. Cada dia é uma nova oportunidade de se cuidar.</p>
+      </section>
+
+      <section class="card achievements-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Marcos</p>
+            <h2>Suas conquistas</h2>
+          </div>
+        </div>
+        <div class="achievements" id="achievements"></div>
+      </section>
+
+      <section class="card support-section">
+        <div class="support-section__icon" aria-hidden="true">💛</div>
+        <div>
+          <p class="eyebrow">Lembrete</p>
+          <h2>Você não precisa vencer o resto da vida hoje.</h2>
+          <p>Só precisa atravessar este momento. Respire, mude de ambiente, beba água e dê alguns minutos para a vontade diminuir.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer><p>Feito para acompanhar progresso, não perfeição.</p></footer>
+  </div>
+
+  <dialog class="modal" id="settingsModal">
+    <form method="dialog" class="modal__content" id="settingsForm">
+      <div class="modal__header">
+        <div>
+          <p class="eyebrow">Configurações</p>
+          <h2>Personalize sua jornada</h2>
+        </div>
+        <button class="icon-button" id="closeSettings" type="button" aria-label="Fechar">✕</button>
+      </div>
+
+      <div class="form-grid">
+        <label>
+          <span>Quando você parou?</span>
+          <input type="datetime-local" id="startDate" /><small class="first-start-note">Na primeira configuração, a contagem começa ao salvar seus dados.</small>
+        </label>
+
+        <label>
+          <span>Cigarros por dia</span>
+          <input type="number" id="cigarettesPerDay" min="1" max="200" value="20" required />
+        </label>
+
+        <label>
+          <span>Preço do maço</span>
+          <div class="money-input">
+            <span aria-hidden="true">R$</span>
+            <input type="number" id="packPrice" min="0" step="0.01" value="12.00" required />
+          </div>
+        </label>
+
+        <label>
+          <span>Cigarros por maço</span>
+          <input type="number" id="cigarettesPerPack" min="1" max="100" value="20" required />
+        </label>
+      </div>
+
+      <div class="modal__actions">
+        <button type="submit" class="button button--primary">Salvar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="modal craving-modal" id="cravingModal">
+    <div class="modal__content">
+      <div class="modal__header">
+        <div>
+          <p class="eyebrow">Este momento vai passar</p>
+          <h2>Foque nos próximos 5 minutos</h2>
+        </div>
+        <button class="icon-button" id="closeCraving" type="button" aria-label="Fechar">✕</button>
+      </div>
+
+      <div class="breathing-box">
+        <div class="breathing-circle" id="breathingCircle"><span id="breathingText">Respire</span></div>
+      </div>
+
+      <div class="coping-grid">
+        <button class="coping-card" type="button" data-tip="water">
+          <span>💧</span><strong>Beba água</strong>
+          <small>Devagar, prestando atenção em cada gole.</small>
+        </button>
+        <button class="coping-card" type="button" data-tip="move">
+          <span>🚶</span><strong>Mude de ambiente</strong>
+          <small>Faça uma pequena caminhada ou vá para outro cômodo.</small>
+        </button>
+        <button class="coping-card" type="button" data-tip="delay">
+          <span>⏱️</span><strong>Adie por 10 minutos</strong>
+          <small>Você não precisa decidir nada agora.</small>
+        </button>
+      </div>
+
+      <p class="craving-message" id="cravingMessage">A vontade costuma vir em ondas. Ela cresce, atinge um pico e depois diminui.</p>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="js/app.js?v=2"></script>
+</body>
+</html>
