@@ -11,5 +11,3 @@ A proposta é simples: acompanhar o tempo sem fumar, as conquistas, os cigarros 
 ## © Direitos autorais
 
 © 2026 Adriana Oliveira. Todos os direitos reservados.
-
-O código está disponível publicamente para visualização, mas não está licenciado para cópia, modificação, redistribuição ou uso comercial sem autorização da autora.
