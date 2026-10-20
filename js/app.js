@@ -27,8 +27,8 @@ const messages = [
   { hours: 24, text: "Um dia completo. Isso já é uma conquista real." },
   { hours: 72, text: "Você está construindo uma nova rotina." },
   { hours: 168, text: "Continue protegendo essa conquista." },
-  { hours: 720, text: "Um mês sem fumar. Você já percorreu um caminho importante." },
-  { hours: 2160, text: "Três meses. Sua história já não é a mesma de quando começou." },
+  { hours: 720, text: "Vamos lá! Você já percorreu um caminho importante." },
+  { hours: 2160, text: "Continue! Sua história já não é a mesma de quando começou." },
   { hours: 8760, text: "Um ano. Uma coleção inteira de escolhas a seu favor." }
 ];
 
